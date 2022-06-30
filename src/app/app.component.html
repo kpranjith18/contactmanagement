@@ -1,0 +1,72 @@
+  <mat-toolbar > 
+    <div >
+      <button mat-fab (click)="addcontacts()">
+        <mat-icon>note_add</mat-icon>
+      </button>
+    </div>&nbsp;
+    <h6>Contacts</h6>
+  </mat-toolbar>
+<div *ngIf="!contactstatus && !editcontact && addcontact">
+  <div class="container">
+    <div class="row ">
+        <div class="col-lg-6 col-md-6">
+          <img  class="contactimg"src="assets/image/contact.jpg" style="width: 100%;" alt="contact">
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <mat-card class="card txtcenter">
+            <mat-card-title>Add Contact</mat-card-title>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Name</mat-label>
+              <input matInput  [(ngModel)]="contactform.cname" name="name">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Phone</mat-label>
+              <input matInput [(ngModel)]="contactform.phone" name="phone">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>EMAIL</mat-label>
+              <input matInput [(ngModel)]="contactform.email" name="email" >
+            </mat-form-field>
+            <mat-form-field class="example-full-width" >
+              <mat-label>Add Comments</mat-label>
+              <textarea matInput [(ngModel)]="contactform.comments" name="commments"></textarea>
+            </mat-form-field>
+            <mat-radio-group name="flavors"  [(ngModel)]="contactform.gender">
+              <mat-radio-button class="mb-2"value="1" checked="true">Male    </mat-radio-button>&nbsp;
+              <mat-radio-button class="mb-2" value="2">Female</mat-radio-button>
+            </mat-radio-group>
+            <br>
+            <button mat-raised-button  class="pl-3" (click)="onsubmit()">ADD</button>&nbsp;
+              <button mat-raised-button color="accent">CANCEL</button>
+          </mat-card>
+        </div>
+    </div>
+</div>
+</div>
+<div *ngIf="contactstatus && !editcontact && !addcontact">
+  <div class="pt-3" *ngIf="!contactdetails">
+      <div class="txtcenter">
+          <img  src="assets/image/nodata.jpg" alt="nodata">
+          <p><b>Contact list empty</b></p>
+      </div>
+   
+  </div>
+  <div *ngIf="contactdetails">
+    <div  *ngFor="let item of contactdetails">
+      <mat-card >
+        <img *ngIf="item.gender==2" src="assets/image/female.png">
+        <img *ngIf="item.gender==1" src="assets/image/male.png">
+        <img *ngIf="!item.gender" src="assets/image/female.png">
+               <mat-card-content>
+       <h1>{{item.cname}}</h1>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>Edit</button>
+          <button mat-button>Delete</button>
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+  
+  </div>
+</div>
