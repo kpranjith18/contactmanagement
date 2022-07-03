@@ -1,0 +1,38 @@
+<div style="text-align:center">
+    <img *ngIf="contactform.gender==2" src="assets/image/female.png">
+    <img *ngIf="contactform.gender==1" src="assets/image/male.png">
+</div>
+<div class="container" >
+    <div class="row">
+        <div class="col-md-3">
+            <h1>Name</h1>
+        </div>
+        <div class="col-md-9">
+            <h2>{{contactform.cname}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h1>Email</h1>
+        </div>
+        <div class="col-md-9">
+            <h2>{{contactform.email}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h1>Phone</h1>
+        </div>
+        <div class="col-md-9">
+            <h2>{{contactform.phone}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <h1>About</h1>
+        </div>
+        <div class="col-md-9">
+            <h2>{{contactform.comments}}</h2>
+        </div>
+    </div>
+</div>

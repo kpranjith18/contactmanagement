@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent} from './app.component';
+import { AppComponent,Deleteconfirm,Viewcontact} from './app.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -15,9 +15,11 @@ import { FormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,Viewcontact,Deleteconfirm
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    FormsModule,MatRadioModule
+    FormsModule,MatRadioModule,MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
