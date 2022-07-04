@@ -13,6 +13,8 @@ export class AppComponent {
   editcontact: boolean = false;
   addcontact: boolean = false;
   contactform: any = {};
+  addcontactform: any = {};
+  clonecontactform:any={};
   ngOnInit() {
     this.load();
     this.showcontact();
@@ -22,21 +24,11 @@ export class AppComponent {
       console.log('No contact Found... Creating...');
       let con = [
         {
-          id: 1,
-          cname: 'Sathrak',
-          email: 'rocky29@gmail.com',
-          phone: '8940571589',
-          comments: 'Friends ',
-          gender: '1',
-          status: 'active'
+          id: 1, cname: 'Name', email: 'example@gmail.com', phone: '0000000000', comments: 'about', gender: '1', status: 'inactive'
         }
-
       ];
-
       localStorage.setItem('contactdata', JSON.stringify(con));
       return
-    } else {
-      console.log('Found employees...');
     }
   }
   edituser(id: any) {
@@ -48,7 +40,7 @@ export class AppComponent {
       if (find.id == id) {
         this.contactform = find;
         console.log(this.contactform);
-        
+
       }
     }
   }
@@ -60,9 +52,8 @@ export class AppComponent {
     this.contactdetails = JSON.parse(localStorage.getItem("contactdata")!);
     for (let find of this.contactdetails) {
       if (find.id == id) {
-        this.contactform = find;
-        console.log(this.contactform);
-this.contactform.id=0;
+        this.clonecontactform = find;
+        this.clonecontactform.id = 0;
       }
     }
   }
@@ -74,10 +65,10 @@ this.contactform.id=0;
     this.addcontact = false;
   }
   addcontacts() {
+    
     this.contactstatus = false;
     this.editcontact = false;
     this.addcontact = true;
-    this.contactform = [];
   }
 
   openDialog(id: any) {
@@ -98,28 +89,33 @@ this.contactform.id=0;
     });
   }
   onsubmit(condition: any) {
+    if (condition == 'new') {
+      this.contactform = this.addcontactform;
+      console.log(this.contactform);
+      
+    }
+    else if(condition=='clone')
+    {
+      console.log("clone co");
+      console.log(this.contactform);
+      
+      this.contactform =this.clonecontactform;
+    }
     if (this.contactform.cname == null || this.contactform.cname == '') {
       this.presentToast('Enter name');
-    }
-    else if (this.contactform.email == null || this.contactform.email == '') {
-      this.presentToast('Enter  mail id');
-    }
-    else if (this.validateEmail(this.contactform.email) == false) {
-      this.presentToast('Enter valid email Address');
-    }
-    else if (this.contactform.phone == null || this.contactform.phone == '') {
+    } else if (this.contactform.phone == null || this.contactform.phone == '') {
       this.presentToast('Enter phone number');
     } else if (this.validateMobileNumber(this.contactform.phone) == false) {
       this.presentToast('Enter valid phone number');
-    } else if (this.contactform.comments == null || this.contactform.comments == '') {
+    } else if (this.contactform.email == null || this.contactform.email == '') {
+      this.presentToast('Enter  mail id');
+    }else if (this.validateEmail(this.contactform.email) == false) {
+      this.presentToast('Enter valid email Address');
+    }else if (this.contactform.comments == null || this.contactform.comments == '') {
       this.presentToast('Enter comments ');
-    }
-    else if (this.contactform.gender == null || this.contactform.gender == '') {
+    }else if (this.contactform.gender == null || this.contactform.gender == '') {
       this.presentToast('Select gender');
-    }
-    else if (condition != 0) {
-      console.log(this.contactform, "Ranjith");
-
+    }else if (condition == 'edit') {
       let a = JSON.parse(localStorage.getItem("contactdata")!);
       for (let i = 0; i < a.length; i++) {
         if (a[i].id == this.contactform.id) {
@@ -129,20 +125,19 @@ this.contactform.id=0;
         }
       }
       localStorage.setItem("contactdata", JSON.stringify(a));
+      this.showcontact();
     }
     else {
       let a = JSON.parse(localStorage.getItem("contactdata")!);
       this.contactform.id = a.length + 1;
       this.contactform.status = "active";
-      console.log(this.contactform);
-      a.push(this.contactform);
+      a.unshift(this.contactform);
       localStorage.setItem("contactdata", JSON.stringify(a));
-      this.contactform = [];
+     
       this.showcontact();
     }
-    this.showcontact();
+
   }
- 
   //Additional User
   presentToast(msg: string, duration: number = 3000) {
     let toast = msg;

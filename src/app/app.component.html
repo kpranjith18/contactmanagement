@@ -25,26 +25,26 @@
           <mat-card-title>New Contact</mat-card-title>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput [(ngModel)]="contactform.cname" name="name">
+            <input matInput [(ngModel)]="addcontactform.cname" name="name">
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Phone</mat-label>
-            <input matInput [(ngModel)]="contactform.phone" name="phone">
+            <input matInput [(ngModel)]="addcontactform.phone" name="phone">
           </mat-form-field>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>EMAIL</mat-label>
-            <input matInput [(ngModel)]="contactform.email" name="email">
+            <input matInput [(ngModel)]="addcontactform.email" name="email">
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>About</mat-label>
-            <textarea matInput [(ngModel)]="contactform.comments" name="commments"></textarea>
+            <textarea matInput [(ngModel)]="addcontactform.comments" name="commments"></textarea>
           </mat-form-field>
-          <mat-radio-group name="flavors" [(ngModel)]="contactform.gender">
+          <mat-radio-group name="flavors" [(ngModel)]="addcontactform.gender">
             <mat-radio-button class="mb-2" value="1" checked="true">Male </mat-radio-button>&nbsp;
             <mat-radio-button class="mb-2" value="2">Female</mat-radio-button>
           </mat-radio-group>
           <br>
-          <button mat-raised-button class="pl-3" (click)="onsubmit(0)">ADD</button>&nbsp;
+          <button mat-raised-button class="pl-3" (click)="onsubmit('new')">ADD</button>&nbsp;
           <button mat-raised-button (click)="showcontact()">CANCEL</button>
         </mat-card>
       </div>
@@ -61,7 +61,7 @@
             <img *ngIf="item.gender==2" src="assets/image/female.png">
             <img *ngIf="item.gender==1" src="assets/image/male.png">
           </div>
-          <mat-card-title class="themecolor" [innerHTML]="item.cname.substring(0,12)"></mat-card-title>
+          <mat-card-title class="themecolor" [innerHTML]="item.cname"></mat-card-title>
           <mat-card-subtitle style="color: green;" *ngIf="item.status=='active'">Active</mat-card-subtitle>
           <mat-card-subtitle style="color: red;" *ngIf="item.status=='inactive'">Inactive</mat-card-subtitle>
         </mat-card-header>
@@ -122,7 +122,7 @@
             <mat-radio-button class="mb-2" value="active">Active</mat-radio-button>&nbsp;
             <mat-radio-button class="mb-2" value="inactive" checked>Inactive</mat-radio-button>
           </mat-radio-group><br>
-          <button mat-raised-button class="pl-3" (click)="onsubmit(contactform.id)">ADD</button>&nbsp;
+          <button mat-raised-button class="pl-3" (click)="onsubmit('edit')">ADD</button>&nbsp;
           <button mat-raised-button (click)="showcontact()">CANCEL</button>
         </mat-card>
       </div>
@@ -138,33 +138,33 @@
       </div>
       <div class="col-md-6">
         <mat-card class="card txtcenter">
-          <mat-card-title>Clone {{contactform.cname}}</mat-card-title>
+          <mat-card-title>Clone {{clonecontactform.cname}}</mat-card-title>
           <mat-form-field class="example-full-width">
             <mat-label>Name</mat-label>
-            <input matInput [(ngModel)]="contactform.cname" name="name">
+            <input matInput [(ngModel)]="clonecontactform.cname" name="name">
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>Phone</mat-label>
-            <input matInput [(ngModel)]="contactform.phone" name="phone">
+            <input matInput [(ngModel)]="clonecontactform.phone" name="phone">
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>EMAIL</mat-label>
-            <input matInput [(ngModel)]="contactform.email" name="email">
+            <input matInput [(ngModel)]="clonecontactform.email" name="email">
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label>About</mat-label>
-            <textarea matInput [(ngModel)]="contactform.comments" name="commments"></textarea>
+            <textarea matInput [(ngModel)]="clonecontactform.comments" name="commments"></textarea>
           </mat-form-field>
-          <mat-radio-group name="gender" [(ngModel)]="contactform.gender" *ngIf="contactform.gender==1">
+          <mat-radio-group name="gender" [(ngModel)]="clonecontactform.gender" *ngIf="clonecontactform.gender==1">
             <mat-radio-button class="mb-2" value="1" checked>Male</mat-radio-button>&nbsp;
             <mat-radio-button class="mb-2" value="2">Female</mat-radio-button>
           </mat-radio-group>
-          <mat-radio-group name="gender" [(ngModel)]="contactform.gender" *ngIf="contactform.gender==2">
+          <mat-radio-group name="gender" [(ngModel)]="clonecontactform.gender" *ngIf="clonecontactform.gender==2">
             <mat-radio-button class="mb-2" value="1">Male </mat-radio-button>&nbsp;
             <mat-radio-button class="mb-2" value="2" checked>Female</mat-radio-button>
           </mat-radio-group>
           <br>
-          <button mat-raised-button class="pl-3" (click)="onsubmit(contactform.id)">ADD</button>&nbsp;
+          <button mat-raised-button class="pl-3" (click)="onsubmit('clone')">ADD</button>&nbsp;
           <button mat-raised-button (click)="showcontact()">CANCEL</button>
         </mat-card>
       </div>
