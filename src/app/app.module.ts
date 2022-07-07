@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent,Deleteconfirm,Viewcontact} from './app.component';
+import { AppComponent} from './app.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -16,10 +16,14 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { EditcontactComponent } from './editcontact/editcontact.component';
+import { ClonecontactComponent } from './clonecontact/clonecontact.component';
+import { NewcontactComponent } from './newcontact/newcontact.component';
+import { Deleteconfirm, ListcontactComponent, Viewcontact } from './listcontact/listcontact.component';
 
 @NgModule({
   declarations: [
-    AppComponent,Viewcontact,Deleteconfirm
+    AppComponent,Viewcontact,Deleteconfirm, EditcontactComponent, ClonecontactComponent,NewcontactComponent,ListcontactComponent
   ],
   imports: [
     BrowserModule,

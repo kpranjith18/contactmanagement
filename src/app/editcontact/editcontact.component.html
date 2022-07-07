@@ -1,0 +1,59 @@
+<div>
+    <mat-toolbar>
+        <div>
+            <button mat-fab routerLink='/new'>
+                <mat-icon>note_add</mat-icon>
+            </button>
+        </div>&nbsp;
+        <span>Contact Management</span>
+    </mat-toolbar>
+    <div class="container">
+        <div class="row contactimg">
+            <div class="col-md-6">
+                <img class="contactimg" src="assets/image/contact.jpg" style="width: 100%;" alt="contact">
+            </div>
+            <div class="col-md-6">
+                <mat-card class="card txtcenter">
+                    <mat-card-title>Edit {{contactform.cname}}</mat-card-title>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Name</mat-label>
+                        <input matInput [(ngModel)]="contactform.cname" name="name">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Phone</mat-label>
+                        <input matInput [(ngModel)]="contactform.phone" name="phone">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>EMAIL</mat-label>
+                        <input matInput [(ngModel)]="contactform.email" name="email">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>About</mat-label>
+                        <textarea matInput [(ngModel)]="contactform.comments" name="commments"></textarea>
+                    </mat-form-field>
+                    <mat-radio-group name="gender" [(ngModel)]="contactform.gender" *ngIf="contactform.gender==1">
+                        <mat-radio-button class="mb-2" value="1" checked>Male</mat-radio-button>&nbsp;
+                        <mat-radio-button class="mb-2" value="2">Female</mat-radio-button>
+                    </mat-radio-group>
+                    <mat-radio-group name="gender" [(ngModel)]="contactform.gender" *ngIf="contactform.gender==2">
+                        <mat-radio-button class="mb-2" value="1">Male </mat-radio-button>&nbsp;
+                        <mat-radio-button class="mb-2" value="2" checked>Female</mat-radio-button>
+                    </mat-radio-group>
+                    <br>
+                    <mat-radio-group name="status" [(ngModel)]="contactform.status"
+                        *ngIf="contactform.status=='active'">
+                        <mat-radio-button class="mb-2" value="active" checked>Active</mat-radio-button>&nbsp;
+                        <mat-radio-button class="mb-2" value="inactive">Inactive</mat-radio-button>
+                    </mat-radio-group>
+                    <mat-radio-group name="status" [(ngModel)]="contactform.status"
+                        *ngIf="contactform.status=='inactive'">
+                        <mat-radio-button class="mb-2" value="active">Active</mat-radio-button>&nbsp;
+                        <mat-radio-button class="mb-2" value="inactive" checked>Inactive</mat-radio-button>
+                    </mat-radio-group><br>
+                    <button mat-raised-button class="pl-3" (click)="onsubmit()">EDIT</button>&nbsp;
+                    <button mat-raised-button routerLink='/list'>CANCEL</button>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
