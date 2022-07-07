@@ -7,6 +7,11 @@ import { NewcontactComponent } from './newcontact/newcontact.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'list',
+    pathMatch: 'full'
+  },
+  {
     path: 'edit/:id',
     component: EditcontactComponent,
   },
