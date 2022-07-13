@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-6">
                 <mat-card class="card txtcenter">
-                    <mat-card-title>{{operation}}</mat-card-title>
+                    <mat-card-title>Contact</mat-card-title>
                     <mat-form-field class="example-full-width">
                         <mat-label>Name</mat-label>
                         <input matInput [(ngModel)]="contactform.cname" name="name">
@@ -42,7 +42,7 @@
                         <mat-radio-button class="mb-2" value="inactive" [checked]="contactform.status=='inactive' ? true : false">Inactive</mat-radio-button>
                     </mat-radio-group>
                   <br>
-                    <button mat-raised-button class="pl-3" (click)="onsubmit()">EDIT</button>&nbsp;
+                    <button mat-raised-button class="pl-3" (click)="onsubmit()">SUBMIT</button>&nbsp;
                     <button *ngIf="!id" mat-raised-button routerLink='/contact'>CANCEL</button>
                     <button *ngIf="id" mat-raised-button [routerLink]="['/details',id]">CANCEL</button>
                 </mat-card>
