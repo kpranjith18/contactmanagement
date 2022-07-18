@@ -10,7 +10,8 @@ const routes: Routes = [
     component: ContactDetailComponent,
   },
 
-  { path: 'contact', loadChildren: contactModule }
+  { path: 'contact', loadChildren: contactModule },
+  { path: '', loadChildren: contactModule }
 ];
 
 @NgModule({
