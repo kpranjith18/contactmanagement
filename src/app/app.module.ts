@@ -11,12 +11,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ContactDetailComponent,Deleteconfirm } from './contact-detail/contact-detail.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent, Deleteconfirm, ContactDetailComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
