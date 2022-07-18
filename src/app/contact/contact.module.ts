@@ -12,14 +12,14 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {ContactComponent } from './contact.component';
+import {ContactComponent,Deleteconfirm } from './contact.component';
 import { CrudtComponent } from './crud.component';
 import { ContactRoutingModule } from './contact-routing.module';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './Layout.component';
 @NgModule({
   declarations: [
- ContactComponent,CrudtComponent,LayoutComponent
+ ContactComponent,CrudtComponent,LayoutComponent,Deleteconfirm
   ],
   imports: [
     CommonModule,
